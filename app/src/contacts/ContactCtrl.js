@@ -11,7 +11,6 @@ angular.module('starterApp')
         self.users = [];
         self.selectUser = selectUser;
         self.toggleList = toggleUsersList;
-        self.share = share;
 
         ContactService
             .loadAllContacts()

@@ -16,20 +16,22 @@
 <body ng-app="starterApp" layout="column" ng-controller="ContactCtrl as ul">
 
 <md-toolbar layout="row">
-    <md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show User List">
+    <md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show Contacts List">
         <md-icon md-svg-icon="menu"></md-icon>
     </md-button>
-    <h1>Angular Material - Starter App</h1>
+    <h1>Contacts Material - Starter App</h1>
 </md-toolbar>
+
+<script src="./bower_components/lodash/lodash.min.js"></script>
 
 <script src="./bower_components/angular/angular.js"></script>
 <script src="./bower_components/angular-animate/angular-animate.js"></script>
 <script src="./bower_components/angular-aria/angular-aria.js"></script>
 <script src="./bower_components/angular-material/angular-material.js"></script>
-<script src="./bower_components/lodash/lodash.min.js"></script>
 
-<script src="./src/contacts/ContactCtrl.js"></script>
 <script src="./src/app.js"></script>
+<script src="./src/contacts/ContactService.js"></script>
+<script src="./src/contacts/ContactCtrl.js"></script>
 
 </body>
 </html>
