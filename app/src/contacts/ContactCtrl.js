@@ -1,36 +1,51 @@
 'use strict';
 
 angular.module('starterApp')
-    .controller('ContactCtrl', function (ContactService, $mdSidenav, //
-                                         $mdBottomSheet, $log, //
-                                         $q) {
+  .controller('ContactCtrl', function (ContactService, $mdSidenav, //
+                                       $mdBottomSheet, $log, //
+                                       $q) {
 
-        var self = this;
+    var self = this;
 
-        self.selected = null;
-        self.users = [];
-        self.selectUser = selectUser;
-        self.toggleList = toggleUsersList;
+    function fetchContacts () {
 
-        ContactService
-            .loadAllContacts()
-            .then(function (users) {
-                self.users = [].concat(users);
-                self.selected = users[ 0 ];
-            });
+      return ContactService.loadAllContacts()
+        .then(function (response) {
 
-        function toggleUsersList () {
-            var pending = $mdBottomSheet.hide() || $q.when(true);
+          var contacts = response.data;
+          self.contacts = contacts;
 
-            pending.then(function () {
-                $mdSidenav('left').toggle();
-            });
-        }
+          return contacts;
+        });
 
-        function selectUser (user) {
-            self.selected = angular.isNumber(user) ? $scope.users[ user ] : user;
-            self.toggleList();
-        }
+    }
 
-    });
+    function initView () {
+
+      fetchContacts()
+        .then(function (contacts) {
+
+          if (!_.isEmpty(contacts)) {
+            self.selectedContact = _.first(contacts);
+          }
+
+        });
+    }
+
+    self.toggleListPanel = function () {
+      var pending = $mdBottomSheet.hide() || $q.when(true);
+
+      pending.then(function () {
+        $mdSidenav('left').toggle();
+      });
+    }
+
+    self.selectContact = function (contact) {
+
+      self.selectedContact = contact;
+      self.toggleListPanel();
+    }
+
+    initView();
+  });
 
