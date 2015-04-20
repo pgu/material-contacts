@@ -10,20 +10,7 @@
 
   <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
   <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css"/>
-  <link rel="stylesheet" href="./bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-content.css"/>
   <link rel="stylesheet" href="assets/app.css"/>
-
-  <style type="text/css">
-    .svg-ic_save_24px-dims {
-      width: 24px;
-      height: 24px;
-    }
-
-    .svg-ic_undo_24px-dims {
-      width: 24px;
-      height: 24px;
-    }
-  </style>
 
 </head>
 <body ng-app="starterApp" layout="column" ng-controller="ContactCtrl as cc">
@@ -93,7 +80,7 @@
 
       <p>
         <md-button class="md-fab md-primary" aria-label="Save contact">
-          <md-icon class="svg-ic_save_24px svg-ic_save_24px-dims"></md-icon>
+          <md-icon md-svg-src="./bower_components/material-design-icons/content/svg/production/ic_save_24px.svg"></md-icon>
         </md-button>
       </p>
 
