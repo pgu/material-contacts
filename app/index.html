@@ -78,6 +78,10 @@
         <md-option ng-value="avatar" ng-repeat="avatar in cc.avatars">{{ avatar }}</md-option>
       </md-select>
 
+      <md-button class="md-fab" aria-label="Save contact">
+        <md-icon md-svg-src="img/icons/cake.svg"></md-icon>
+      </md-button>
+
     </form>
 
     <md-button class="delete-contact" md-no-ink ng-click="cc.deleteContact($event)" aria-label="Delete contact">
