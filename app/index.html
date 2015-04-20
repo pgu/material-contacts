@@ -78,14 +78,17 @@
         <md-option ng-value="avatar" ng-repeat="avatar in cc.avatars">{{ avatar }}</md-option>
       </md-select>
 
-      <p>
-        <md-button class="md-fab" aria-label="Undo changes">
+      <section layout="row" layout-align="left center" style="margin-top: 40px;">
+
+        <md-button class="md-fab" aria-label="Undo changes" style="margin-right: 10px;">
           <md-icon md-svg-src="undo"></md-icon>
         </md-button>
+
         <md-button class="md-fab md-primary" aria-label="Save contact">
           <md-icon md-svg-src="save"></md-icon>
         </md-button>
-      </p>
+
+      </section>
 
     </form>
 
