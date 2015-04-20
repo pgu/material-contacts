@@ -48,12 +48,10 @@
         <label>Last Name</label>
         <input name="lastName"
                ng-model="cc.selectedContact.lastName"
-               required md-maxlength="10"
-               placeholder="Last name">
+               required>
 
         <div ng-messages="contactForm.lastName.$error" ng-show="contactForm.lastName.$dirty">
           <div ng-message="required">This is required!</div>
-          <div ng-message="md-maxlength">That's too long!</div>
         </div>
       </md-input-container>
 
@@ -61,19 +59,16 @@
         <label>First Name</label>
         <input name="firstName"
                ng-model="cc.selectedContact.firstName"
-               required md-maxlength="10"
-               placeholder="First name">
+               required>
 
         <div ng-messages="contactForm.firstName.$error" ng-show="contactForm.firstName.$dirty">
           <div ng-message="required">This is required!</div>
-          <div ng-message="md-maxlength">That's too long!</div>
         </div>
       </md-input-container>
 
       <md-select ng-model="cc.selectedContact.avatar" placeholder="Select an avatar">
         <md-option ng-value="avatar" ng-repeat="avatar in cc.avatars">{{ avatar }}</md-option>
       </md-select>
-
 
     </form>
 
