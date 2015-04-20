@@ -6,7 +6,7 @@ angular.module('starterApp', [ 'ngMaterial', 'ngMessages' ])
     var contactIcons = [
       'add-contact', 'contact-man', 'contact-woman', 'contacts',
       'easter-6', 'easter-8', 'easter-10', 'easter-12', 'easter-13',
-      'manager', 'operator', 'owner', 'remove-contact'
+      'manager', 'operator', 'owner', 'delete-contact'
     ];
 
     _.each(contactIcons, function (ic) {
