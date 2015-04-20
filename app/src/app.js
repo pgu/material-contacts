@@ -15,14 +15,17 @@ angular.module('starterApp', [ 'ngMaterial', 'ngMessages' ])
 
     $mdIconProvider
       //.defaultIconSet('./assets/svg/avatars.svg', 128)
-      .icon('menu', './assets/svg/menu.svg', 24);
+      .icon('menu', './assets/svg/menu.svg', 24)
+      .icon('save', './bower_components/material-design-icons/content/svg/production/ic_save_24px.svg', 24)
+      .icon('undo', './bower_components/material-design-icons/content/svg/production/ic_undo_24px.svg', 24)
+    ;
 //                        .icon('google_plus', './assets/svg/google_plus.svg', 512)
 //                        .icon('hangouts', './assets/svg/hangouts.svg', 512)
 //                        .icon('twitter', './assets/svg/twitter.svg', 512)
 //                        .icon('phone', './assets/svg/phone.svg', 512);
 
     $mdThemingProvider.theme('default')
-      .primaryPalette('brown')
-      .accentPalette('red');
+      .primaryPalette('blue')
+      .accentPalette('blue-grey');
 
   });

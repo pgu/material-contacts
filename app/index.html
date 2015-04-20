@@ -79,14 +79,19 @@
       </md-select>
 
       <p>
+        <md-button class="md-fab" aria-label="Undo changes">
+          <md-icon md-svg-src="undo"></md-icon>
+        </md-button>
         <md-button class="md-fab md-primary" aria-label="Save contact">
-          <md-icon md-svg-src="./bower_components/material-design-icons/content/svg/production/ic_save_24px.svg"></md-icon>
+          <md-icon md-svg-src="save"></md-icon>
         </md-button>
       </p>
 
     </form>
 
-    <md-button class="delete-contact" md-no-ink ng-click="cc.deleteContact($event)" aria-label="Delete contact">
+    <md-button class="delete-contact" md-no-ink
+               ng-click="cc.deleteContact($event)"
+               aria-label="Delete contact">
       <md-icon md-svg-icon="delete-contact"></md-icon>
     </md-button>
 
