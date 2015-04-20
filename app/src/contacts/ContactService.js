@@ -4,8 +4,8 @@ angular.module('starterApp')
   .factory('ContactService', function ($q) {
 
     var contacts = [
-      { id: '1', firstName: 'John', lastName: 'Doe' },
-      { id: '2', firstName: 'Lara', lastName: 'Croft' }
+      { id: '1', firstName: 'John', lastName: 'Doe', avatar: 'contact-man' },
+      { id: '2', firstName: 'Lara', lastName: 'Croft', avatar: 'contact-woman' }
     ];
 
     return {
