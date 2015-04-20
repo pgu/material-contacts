@@ -53,6 +53,18 @@ angular.module('starterApp')
       self.toggleListPanel();
     }
 
+    self.addContact = function () {
+
+      self.selectedContact = {
+        firstName: '',
+        lastName: '',
+        avatar: _.first(self.avatars)
+      };
+
+      self.toggleListPanel();
+
+    };
+
     initView();
   });
 
