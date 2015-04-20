@@ -29,8 +29,7 @@
       <md-item ng-repeat="contact in cc.contacts">
         <md-button ng-click="cc.selectContact(contact)" ng-class="{'selected' : contact === cc.selectedContact }">
           <md-icon md-svg-icon="{{ contact.avatar }}" class="avatar"></md-icon>
-          <!--<div style="width:128px;height:128px;background:lightgrey;"></div>-->
-          <span>{{ contact.name }}</span>
+          <span>{{ contact.firstName }} {{ contact.lastName }}</span>
         </md-button>
       </md-item>
     </md-list>
