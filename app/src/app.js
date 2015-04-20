@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('starterApp', [ 'ngMaterial' ])
+angular.module('starterApp', [ 'ngMaterial', 'ngMessages' ])
   .config(function ($mdThemingProvider, $mdIconProvider) {
 
     var contactIcons = [

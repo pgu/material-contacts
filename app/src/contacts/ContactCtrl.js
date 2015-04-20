@@ -7,6 +7,13 @@ angular.module('starterApp')
 
     var self = this;
 
+    self.avatars = [
+      'contact-man', 'contact-woman',
+      'owner', 'manager', 'operator',
+      'easter-6', 'easter-8', 'easter-10', 'easter-12', 'easter-13'
+    ];
+
+
     function fetchContacts () {
 
       return ContactService.loadAllContacts()

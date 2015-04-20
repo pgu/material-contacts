@@ -41,6 +41,42 @@
 
     <p>{{ cc.selectedContact.lastName }}</p>
 
+    <form name="contactForm"
+          novalidate>
+
+      <md-input-container>
+        <label>Last Name</label>
+        <input name="lastName"
+               ng-model="cc.selectedContact.lastName"
+               required md-maxlength="10"
+               placeholder="Last name">
+
+        <div ng-messages="contactForm.lastName.$error" ng-show="contactForm.lastName.$dirty">
+          <div ng-message="required">This is required!</div>
+          <div ng-message="md-maxlength">That's too long!</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container>
+        <label>First Name</label>
+        <input name="firstName"
+               ng-model="cc.selectedContact.firstName"
+               required md-maxlength="10"
+               placeholder="First name">
+
+        <div ng-messages="contactForm.firstName.$error" ng-show="contactForm.firstName.$dirty">
+          <div ng-message="required">This is required!</div>
+          <div ng-message="md-maxlength">That's too long!</div>
+        </div>
+      </md-input-container>
+
+      <md-select ng-model="cc.selectedContact.avatar" placeholder="Select an avatar">
+        <md-option ng-value="avatar" ng-repeat="avatar in cc.avatars">{{ avatar }}</md-option>
+      </md-select>
+
+
+    </form>
+
     <md-button class="add-contact" md-no-ink ng-click="cc.addContact($event)" aria-label="Add contact">
       <md-icon md-svg-icon="add-contact"></md-icon>
     </md-button>
@@ -51,6 +87,7 @@
 <script src="./bower_components/lodash/lodash.min.js"></script>
 
 <script src="./bower_components/angular/angular.js"></script>
+<script src="./bower_components/angular-messages/angular-messages.js"></script>
 <script src="./bower_components/angular-animate/angular-animate.js"></script>
 <script src="./bower_components/angular-aria/angular-aria.js"></script>
 <script src="./bower_components/angular-material/angular-material.js"></script>
