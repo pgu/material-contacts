@@ -7,9 +7,11 @@ tmp
 app/jspm_packages
 
 app/bower_components/material-design-icons/*
-!app/bower_components/material-design-icons/sprites/
-app/bower_components/material-design-icons/sprites/*
-!app/bower_components/material-design-icons/sprites/svg-sprite
-app/bower_components/material-design-icons/sprites/svg-sprite/*
-!app/bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-content.css
-!app/bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-content.svg
+!app/bower_components/material-design-icons/content/
+app/bower_components/material-design-icons/content/*
+!app/bower_components/material-design-icons/content/svg
+app/bower_components/material-design-icons/content/svg/*
+!app/bower_components/material-design-icons/content/svg/production
+app/bower_components/material-design-icons/content/svg/production/*
+!app/bower_components/material-design-icons/content/svg/production/ic_save_24px.svg
+!app/bower_components/material-design-icons/content/svg/production/ic_undo_24px.svg
