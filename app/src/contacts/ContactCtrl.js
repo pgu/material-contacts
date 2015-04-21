@@ -21,26 +21,26 @@ angular.module('starterApp')
     ];
 
 
-    function fetchContacts () {
+    function fetchContacts (ctrl) {
 
       return ContactService.loadAllContacts()
         .then(function (response) {
 
           var contacts = response.data;
-          self.contacts = contacts;
+          ctrl.contacts = contacts;
 
           return contacts;
         });
 
     }
 
-    function initView () {
+    function initView (ctrl) {
 
-      fetchContacts()
+      fetchContacts(ctrl)
         .then(function (contacts) {
 
           if (!_.isEmpty(contacts)) {
-            self.selectedContact = _.first(contacts);
+            ctrl.selectedContact = _.first(contacts);
           }
 
         });
@@ -54,18 +54,18 @@ angular.module('starterApp')
       });
     }
 
-    self.selectContact = function (contact) {
+    self.selectContact = function (contact, ctrl) {
 
-      self.selectedContact = contact;
+      ctrl.selectedContact = contact;
       self.toggleListPanel();
     }
 
-    self.addContact = function () {
+    self.addContact = function (ctrl) {
 
-      self.selectedContact = {
+      ctrl.selectedContact = {
         firstName: '',
         lastName: '',
-        avatar: _.first(self.avatars)
+        avatar: _.first(self.avatars).value
       };
 
       self.toggleListPanel();
@@ -76,6 +76,6 @@ angular.module('starterApp')
 
     };
 
-    initView();
+    initView(self);
   });
 

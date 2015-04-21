@@ -28,14 +28,14 @@
     <md-list>
 
       <md-item>
-        <md-button ng-click="cc.addContact()" ng-class="{'selected' : !cc.selectedContact.id }">
+        <md-button ng-click="cc.addContact(cc)" ng-class="{'selected' : !cc.selectedContact.id }">
           <md-icon md-svg-icon="add-contact" class="avatar"></md-icon>
           <span>New contact</span>
         </md-button>
       </md-item>
 
       <md-item ng-repeat="contact in cc.contacts">
-        <md-button ng-click="cc.selectContact(contact)" ng-class="{'selected' : contact === cc.selectedContact }">
+        <md-button ng-click="cc.selectContact(contact, cc)" ng-class="{'selected' : contact.id === cc.selectedContact.id }">
           <md-icon md-svg-icon="{{ contact.avatar }}" class="avatar"></md-icon>
           <span>{{ contact.firstName }} {{ contact.lastName }}</span>
         </md-button>
