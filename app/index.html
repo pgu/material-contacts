@@ -45,9 +45,6 @@
 
   <md-content flex id="content">
     <md-icon md-svg-icon="{{cc.copyContact.avatar}}" class="avatar"></md-icon>
-    <h2>{{ cc.copyContact.firstName }}</h2>
-
-    <p>{{ cc.copyContact.lastName }}</p>
 
     <form name="contactForm"
           ng-if="cc.copyContact"
@@ -92,6 +89,7 @@
         </md-button>
 
         <md-button class="md-fab md-primary" aria-label="Save contact"
+                   ng-disabled="contactForm.$invalid"
                    ng-click="cc.saveContact(cc.copyContact, cc.contacts, cc)">
           <md-icon md-svg-src="save"></md-icon>
         </md-button>

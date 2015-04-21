@@ -54,17 +54,20 @@ angular.module('starterApp')
       pending.then(function () {
         $mdSidenav('left').toggle();
       });
-    }
+    };
 
     self.selectContact = function (contact, ctrl) {
       ctrl.copyContact = null;
 
+      var timeoutMs = contact.id ? 0 : 300; // reset form state (dirty, ...)
       $timeout(function () {
+
         ctrl.copyContact = _.cloneDeep(contact);
         self.toggleListPanel();
-      });
 
-    }
+      }, timeoutMs);
+
+    };
 
     self.addContact = function (ctrl) {
 
