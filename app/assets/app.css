@@ -29,9 +29,9 @@ md-list .md-button {
     width: 100%;
 }
 
-md-list .md-button.selected {
-    color: rgb(33, 150, 243);
-}
+/*md-list .md-button.selected {*/
+    /*color: rgb(33, 150, 243);*/
+/*}*/
 
 md-sidenav md-list {
     padding: 0px 0px 8px 0px;
@@ -65,7 +65,6 @@ md-sidenav md-list {
 }
 
 #content .md-button.delete-contact > md-icon {
-    fill: black;
     width: 36px;
     height: 36px;
 }
