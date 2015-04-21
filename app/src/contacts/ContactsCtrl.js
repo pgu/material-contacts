@@ -23,23 +23,6 @@ angular.module('starterApp')
       { label: 'Egg 5', value: 'easter-13' }
     ];
 
-    $scope.$watch(function () {
-      return NotificationsService.messages;
-    }, function (notifications) {
-
-      _.each(notifications, function (notification) {
-
-        $mdToast.show(
-          $mdToast.simple()
-            .content(notification)
-            .position('top left')
-        );
-
-      });
-
-      NotificationsService.messages = [];
-    }, true);
-
     function showToast (message) {
       return $mdToast.show(
         $mdToast.simple()
