@@ -33,7 +33,9 @@
           <md-button ng-click="cc.addContact(cc)"
                      class="md-primary"
                      ng-disabled="cc.isAsyncInProgress">
-            <md-icon md-svg-icon="add-contact" class="avatar"></md-icon>
+            <div class="wrap-avatar">
+              <md-icon md-svg-icon="add-contact" class="avatar"></md-icon>
+            </div>
             <span>New contact</span>
           </md-button>
         </md-item>
@@ -42,15 +44,20 @@
           <md-button ng-click="cc.selectContact(contact, cc)"
                      ng-class="{'md-accent' : contact.id === cc.copyContact.id }"
                      ng-disabled="cc.isAsyncInProgress">
-            <md-icon md-svg-icon="{{ contact.avatar }}" class="avatar"></md-icon>
+
+            <div class="wrap-avatar">
+              <md-icon md-svg-icon="{{ contact.avatar }}" class="avatar"></md-icon>
+            </div>
             <span>{{ contact.firstName }} {{ contact.lastName }}</span>
+
           </md-button>
         </md-item>
       </md-list>
     </md-sidenav>
 
     <md-content flex id="content">
-      <md-icon md-svg-icon="{{cc.copyContact.avatar}}" class="avatar"></md-icon>
+
+      <md-icon md-svg-icon="{{cc.copyContact.avatar}}" class="avatar-without-wrap"></md-icon>
 
       <form name="contactForm"
             ng-if="cc.copyContact"

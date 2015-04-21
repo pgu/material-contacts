@@ -30,7 +30,7 @@ md-list .md-button {
 }
 
 /*md-list .md-button.selected {*/
-    /*color: rgb(33, 150, 243);*/
+/*color: rgb(33, 150, 243);*/
 /*}*/
 
 md-sidenav md-list {
@@ -101,11 +101,39 @@ md-toolbar h1 {
     font-weight: 400;
 }
 
+.avatar-without-wrap {
+    position: relative;
+    width: 128px;
+    height: 128px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    display: inline-block;
+    overflow: hidden;
+    margin: 0px;
+    vertical-align: middle;
+    zoom: 0.70;
+    transform: translateZ(0);
+    -webkit-transform: scale(0.70);
+    -moz-transform: scale(0.70);
+}
+
 .avatar {
     position: relative;
     width: 128px;
     height: 128px;
     border: 1px solid #ddd;
+    border-radius: 50%;
+    display: inline-block;
+    overflow: hidden;
+    margin: 0px;
+    vertical-align: middle;
+}
+
+.wrap-avatar {
+    position: relative;
+    height: 128px;
+    width: 128px;
+    border: 1px solid transparent;
     border-radius: 50%;
     display: inline-block;
     overflow: hidden;
