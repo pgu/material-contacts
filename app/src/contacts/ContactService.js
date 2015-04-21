@@ -34,9 +34,16 @@ angular.module('starterApp')
 
           return $q.when({ data: originalContact });
         }
+      },
 
+      deleteContact: function (copyContact) {
 
+        var idxToRemove = _.findIndex(contacts, { id: copyContact.id });
+        contacts.splice(idxToRemove, 1);
+
+        return $q.when({});
       }
+
     };
 
   });

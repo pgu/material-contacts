@@ -39,11 +39,11 @@ angular.module('starterApp')
 
     function initView (ctrl) {
 
-      fetchContacts(ctrl)
+      return fetchContacts(ctrl)
         .then(function (contacts) {
 
           if (!_.isEmpty(contacts)) {
-            self.selectContact(_.first(contacts), ctrl);
+            return self.selectContact(_.first(contacts), ctrl);
           }
 
         });
@@ -52,7 +52,7 @@ angular.module('starterApp')
     self.toggleListPanel = function () {
       var pending = $mdBottomSheet.hide() || $q.when(true);
 
-      pending.then(function () {
+      return pending.then(function () {
         $mdSidenav('left').toggle();
       });
     };
@@ -61,10 +61,10 @@ angular.module('starterApp')
       ctrl.copyContact = null;
 
       var timeoutMs = contact.id ? 0 : 300; // reset form state (dirty, ...)
-      $timeout(function () {
+      return $timeout(function () {
 
         ctrl.copyContact = _.cloneDeep(contact);
-        self.toggleListPanel();
+        return self.toggleListPanel();
 
       }, timeoutMs);
 
@@ -78,8 +78,7 @@ angular.module('starterApp')
         avatar: _.first(self.avatars).value
       };
 
-      self.toggleListPanel();
-
+      return self.toggleListPanel();
     };
 
     self.resetContact = function (copyContact, contacts) {
@@ -100,7 +99,7 @@ angular.module('starterApp')
             var newContact = response.data;
 
             contacts.push(newContact);
-            self.selectContact(newContact, ctrl);
+            return self.selectContact(newContact, ctrl);
           }
 
         });
@@ -108,28 +107,33 @@ angular.module('starterApp')
 
     function deleteContact (copyContact, contacts, ctrl) {
 
-      var idxToRemove = _.findIndex(contacts, { id: copyContact.id });
+      return ContactService.deleteContact(copyContact)
+        .then(function () {
 
-      var contactToSelect;
-      if (idxToRemove > 0) {
-        contactToSelect = contacts[ idxToRemove - 1 ];
+          var idxToRemove = _.findIndex(contacts, { id: copyContact.id });
 
-      } else if (idxToRemove === 0) {
+          var contactToSelect;
+          if (idxToRemove > 0) {
+            contactToSelect = contacts[ idxToRemove - 1 ];
 
-        if (_.size(contacts) > 1) {
-          contactToSelect = contacts[ 1 ];
-        }
+          } else if (idxToRemove === 0) {
 
-      }
+            if (_.size(contacts) > 1) {
+              contactToSelect = contacts[ 1 ];
+            }
 
-      contacts.splice(idxToRemove, 1);
+          }
 
-      if (contactToSelect) {
-        self.selectContact(contactToSelect, ctrl);
+          contacts.splice(idxToRemove, 1);
 
-      } else {
-        self.addContact(ctrl);
-      }
+          if (contactToSelect) {
+            return self.selectContact(contactToSelect, ctrl);
+
+          } else {
+            return self.addContact(ctrl);
+          }
+
+        });
 
     }
 
@@ -140,9 +144,9 @@ angular.module('starterApp')
         .ok('Yes')
         .cancel('Cancel');
 
-      $mdDialog.show(confirm)
+      return $mdDialog.show(confirm)
         .then(function () {
-          deleteContact(copyContact, contacts, ctrl);
+          return deleteContact(copyContact, contacts, ctrl);
         });
 
     };
