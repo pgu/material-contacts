@@ -79,8 +79,8 @@
           </div>
         </md-input-container>
 
-        <md-select ng-model="cc.copyContact.avatar" placeholder="Select an avatar"
-                   ng-disabled="cc.isAsyncInProgress">
+        <!--no ng-disabled on md-select for now, see: https://github.com/angular/material/pull/1871-->
+        <md-select ng-model="cc.copyContact.avatar" placeholder="Select an avatar">
           <md-option ng-value="avatar.value"
                      ng-repeat="avatar in cc.avatars">
             {{ avatar.label }}
