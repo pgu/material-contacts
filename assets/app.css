@@ -127,3 +127,7 @@ span.name {
     font-size: 1.1em;
     padding-left: 5px;
 }
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
