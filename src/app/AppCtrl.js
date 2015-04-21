@@ -19,7 +19,7 @@ angular.module('starterApp')
           );
 
         }
-      }
+      };
     }
 
     var showError = showMessage('error', 'top left');

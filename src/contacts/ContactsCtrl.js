@@ -2,7 +2,7 @@
 
 angular.module('starterApp')
   .controller('ContactsCtrl', function (ContactsService, $mdSidenav, //
-                                        $mdBottomSheet, $log, //
+                                        $log, //
                                         $q, $scope, //
                                         $timeout, $mdDialog, //
                                         $window, $mdToast, //
@@ -55,11 +55,7 @@ angular.module('starterApp')
     }
 
     self.toggleListPanel = function () {
-      var pending = $mdBottomSheet.hide() || $q.when(true);
-
-      return pending.then(function () {
-        $mdSidenav('left').toggle();
-      });
+      $mdSidenav('left').toggle();
     };
 
     self.selectContact = function (contact, ctrl) {
@@ -69,7 +65,7 @@ angular.module('starterApp')
       return $timeout(function () {
 
         ctrl.copyContact = _.cloneDeep(contact);
-        return self.toggleListPanel();
+        $mdSidenav('left').close();
 
       }, timeoutMs);
 
@@ -83,7 +79,7 @@ angular.module('starterApp')
         avatar: _.first(self.avatars).value
       };
 
-      return self.toggleListPanel();
+      $mdSidenav('left').close();
     };
 
     self.resetContact = function (copyContact, contacts) {
