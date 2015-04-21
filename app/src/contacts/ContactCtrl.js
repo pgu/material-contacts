@@ -3,7 +3,8 @@
 angular.module('starterApp')
   .controller('ContactCtrl', function (ContactService, $mdSidenav, //
                                        $mdBottomSheet, $log, //
-                                       $q) {
+                                       $q, $scope, //
+                                       $timeout) {
 
     var self = this;
 
@@ -21,13 +22,19 @@ angular.module('starterApp')
     ];
 
 
+    function sortContacts (ctrl) {
+      ctrl.contacts = _.sortByOrder(ctrl.contacts, [ 'firtsName', 'lastName' ]);
+    }
+
     function fetchContacts (ctrl) {
 
       return ContactService.loadAllContacts()
         .then(function (response) {
 
           var contacts = response.data;
+
           ctrl.contacts = contacts;
+          sortContacts(ctrl);
 
           return contacts;
         });
@@ -55,9 +62,13 @@ angular.module('starterApp')
     }
 
     self.selectContact = function (contact, ctrl) {
+      ctrl.copyContact = null;
 
-      ctrl.copyContact = _.cloneDeep(contact);
-      self.toggleListPanel();
+      $timeout(function () {
+        ctrl.copyContact = _.cloneDeep(contact);
+        self.toggleListPanel();
+      });
+
     }
 
     self.addContact = function (ctrl) {
@@ -79,7 +90,26 @@ angular.module('starterApp')
 
     };
 
-    self.saveContact = function (contact) {
+    self.saveContact = function (copyContact, ctrl) {
+
+      var isCreation = !_.has(copyContact, 'id');
+      if (isCreation) {
+
+        var newContact = _.cloneDeep(copyContact);
+        newContact.id = Date.now();
+
+        ctrl.contacts.push(newContact);
+        sortContacts(ctrl);
+
+        self.selectContact(newContact, ctrl);
+
+      } else {
+
+        var originalContact = _.find(ctrl.contacts, { id: copyContact.id });
+        angular.copy(copyContact, originalContact);
+
+        sortContacts(ctrl);
+      }
 
     };
 

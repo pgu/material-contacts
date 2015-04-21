@@ -50,18 +50,8 @@
     <p>{{ cc.copyContact.lastName }}</p>
 
     <form name="contactForm"
+          ng-if="cc.copyContact"
           novalidate>
-
-      <md-input-container>
-        <label>Last Name</label>
-        <input name="lastName"
-               ng-model="cc.copyContact.lastName"
-               required>
-
-        <div ng-messages="contactForm.lastName.$error" ng-show="contactForm.lastName.$dirty">
-          <div ng-message="required">This is required!</div>
-        </div>
-      </md-input-container>
 
       <md-input-container>
         <label>First Name</label>
@@ -70,6 +60,17 @@
                required>
 
         <div ng-messages="contactForm.firstName.$error" ng-show="contactForm.firstName.$dirty">
+          <div ng-message="required">This is required!</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Last Name</label>
+        <input name="lastName"
+               ng-model="cc.copyContact.lastName"
+               required>
+
+        <div ng-messages="contactForm.lastName.$error" ng-show="contactForm.lastName.$dirty">
           <div ng-message="required">This is required!</div>
         </div>
       </md-input-container>
@@ -91,7 +92,7 @@
         </md-button>
 
         <md-button class="md-fab md-primary" aria-label="Save contact"
-                   ng-click="cc.saveContact(cc.copyContact)">
+                   ng-click="cc.saveContact(cc.copyContact, cc)">
           <md-icon md-svg-src="save"></md-icon>
         </md-button>
 
