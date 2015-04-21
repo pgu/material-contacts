@@ -22,10 +22,6 @@ angular.module('starterApp')
     ];
 
 
-    function sortContacts (ctrl) {
-      ctrl.contacts = _.sortByOrder(ctrl.contacts, [ 'firtsName', 'lastName' ]);
-    }
-
     function fetchContacts (ctrl) {
 
       return ContactService.loadAllContacts()
@@ -34,7 +30,6 @@ angular.module('starterApp')
           var contacts = response.data;
 
           ctrl.contacts = contacts;
-          sortContacts(ctrl);
 
           return contacts;
         });
@@ -99,7 +94,6 @@ angular.module('starterApp')
         newContact.id = Date.now();
 
         ctrl.contacts.push(newContact);
-        sortContacts(ctrl);
 
         self.selectContact(newContact, ctrl);
 
@@ -108,7 +102,6 @@ angular.module('starterApp')
         var originalContact = _.find(ctrl.contacts, { id: copyContact.id });
         angular.copy(copyContact, originalContact);
 
-        sortContacts(ctrl);
       }
 
     };
