@@ -92,22 +92,18 @@ angular.module('starterApp')
     self.saveContact = function (copyContact, contacts, ctrl) {
 
       var isCreation = !_.has(copyContact, 'id');
-      if (isCreation) {
 
-        var newContact = _.cloneDeep(copyContact);
-        newContact.id = Date.now();
+      return ContactService.saveContact(copyContact)
+        .then(function (response) {
 
-        contacts.push(newContact);
+          if (isCreation) {
+            var newContact = response.data;
 
-        self.selectContact(newContact, ctrl);
+            contacts.push(newContact);
+            self.selectContact(newContact, ctrl);
+          }
 
-      } else {
-
-        var originalContact = _.find(contacts, { id: copyContact.id });
-        angular.copy(copyContact, originalContact);
-
-      }
-
+        });
     };
 
     function deleteContact (copyContact, contacts, ctrl) {
