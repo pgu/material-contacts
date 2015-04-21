@@ -28,14 +28,18 @@
     <md-list>
 
       <md-item>
-        <md-button ng-click="cc.addContact(cc)" ng-class="{'selected' : !cc.copyContact.id }">
+        <md-button ng-click="cc.addContact(cc)"
+                   ng-class="{'selected' : !cc.copyContact.id }"
+                   ng-disabled="cc.isAsyncInProgress">
           <md-icon md-svg-icon="add-contact" class="avatar"></md-icon>
           <span>New contact</span>
         </md-button>
       </md-item>
 
       <md-item ng-repeat="contact in cc.contacts">
-        <md-button ng-click="cc.selectContact(contact, cc)" ng-class="{'selected' : contact.id === cc.copyContact.id }">
+        <md-button ng-click="cc.selectContact(contact, cc)"
+                   ng-class="{'selected' : contact.id === cc.copyContact.id }"
+                   ng-disabled="cc.isAsyncInProgress">
           <md-icon md-svg-icon="{{ contact.avatar }}" class="avatar"></md-icon>
           <span>{{ contact.firstName }} {{ contact.lastName }}</span>
         </md-button>
@@ -48,6 +52,7 @@
 
     <form name="contactForm"
           ng-if="cc.copyContact"
+          ng-disabled="cc.isAsyncInProgress"
           novalidate>
 
       <md-input-container>
@@ -72,7 +77,8 @@
         </div>
       </md-input-container>
 
-      <md-select ng-model="cc.copyContact.avatar" placeholder="Select an avatar">
+      <md-select ng-model="cc.copyContact.avatar" placeholder="Select an avatar"
+                 ng-disabled="cc.isAsyncInProgress">
         <md-option ng-value="avatar.value"
                    ng-repeat="avatar in cc.avatars">
           {{ avatar.label }}
@@ -84,12 +90,13 @@
         <md-button class="md-fab" aria-label="Undo changes"
                    style="margin-right: 10px;"
                    ng-if="cc.copyContact.id"
+                   ng-disabled="cc.isAsyncInProgress"
                    ng-click="cc.resetContact(cc.copyContact, cc.contacts)">
           <md-icon md-svg-src="undo"></md-icon>
         </md-button>
 
         <md-button class="md-fab md-primary" aria-label="Save contact"
-                   ng-disabled="contactForm.$invalid"
+                   ng-disabled="contactForm.$invalid || cc.isAsyncInProgress"
                    ng-click="cc.saveContact(cc.copyContact, cc.contacts, cc)">
           <md-icon md-svg-src="save"></md-icon>
         </md-button>
@@ -100,6 +107,7 @@
 
     <md-button class="delete-contact" md-no-ink
                ng-if="cc.copyContact.id"
+               ng-disabled="cc.isAsyncInProgress"
                ng-click="cc.deleteContact(cc.copyContact, cc.contacts, cc)"
                aria-label="Delete contact">
       <md-icon md-svg-icon="delete-contact"></md-icon>
@@ -107,6 +115,13 @@
 
   </md-content>
 
+</div>
+
+<div style="position: fixed; bottom: 0;height: 90px; width: 100%;"
+     ng-if="cc.isAsyncInProgress">
+  <div layout="row" layout-sm="column" layout-align="space-around">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  </div>
 </div>
 
 <script src="./bower_components/lodash/lodash.min.js"></script>

@@ -1,18 +1,22 @@
 'use strict';
 
 angular.module('starterApp')
-  .factory('ContactService', function ($q) {
+  .factory('ContactService', function ($q, $timeout) {
 
     var contacts = [
       { id: '1', firstName: 'John', lastName: 'Doe', avatar: 'contact-man' },
       { id: '2', firstName: 'Lara', lastName: 'Croft', avatar: 'contact-woman' }
     ];
 
+    var ms = 2000;
+
     return {
 
       loadAllContacts: function () {
         var data = _.cloneDeep(contacts);
-        return $q.when({ data: data });
+        return $timeout(function () {
+          return $q.when({ data: data });
+        }, ms);
       },
 
       saveContact: function (copyContact) {
@@ -25,14 +29,18 @@ angular.module('starterApp')
 
           contacts.push(newContact);
 
-          return $q.when({ data: newContact });
+          return $timeout(function () {
+            return $q.when({ data: newContact });
+          }, ms);
 
         } else {
 
           var originalContact = _.find(contacts, { id: copyContact.id });
           angular.copy(copyContact, originalContact);
 
-          return $q.when({ data: originalContact });
+          return $timeout(function () {
+            return $q.when({ data: originalContact });
+          }, ms);
         }
       },
 
@@ -41,7 +49,9 @@ angular.module('starterApp')
         var idxToRemove = _.findIndex(contacts, { id: copyContact.id });
         contacts.splice(idxToRemove, 1);
 
-        return $q.when({});
+        return $timeout(function () {
+          return $q.when({});
+        }, ms);
       }
 
     };

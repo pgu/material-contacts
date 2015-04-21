@@ -25,6 +25,8 @@ angular.module('starterApp')
 
     function fetchContacts (ctrl) {
 
+      ctrl.isAsyncInProgress = true;
+
       return ContactService.loadAllContacts()
         .then(function (response) {
 
@@ -33,6 +35,9 @@ angular.module('starterApp')
           ctrl.contacts = contacts;
 
           return contacts;
+        })
+        .finally(function () {
+          ctrl.isAsyncInProgress = false;
         });
 
     }
@@ -92,6 +97,8 @@ angular.module('starterApp')
 
       var isCreation = !_.has(copyContact, 'id');
 
+      ctrl.isAsyncInProgress = true;
+
       return ContactService.saveContact(copyContact)
         .then(function (response) {
 
@@ -102,10 +109,15 @@ angular.module('starterApp')
             return self.selectContact(newContact, ctrl);
           }
 
+        })
+        .finally(function () {
+          ctrl.isAsyncInProgress = false;
         });
     };
 
     function deleteContact (copyContact, contacts, ctrl) {
+
+      ctrl.isAsyncInProgress = true;
 
       return ContactService.deleteContact(copyContact)
         .then(function () {
@@ -133,6 +145,9 @@ angular.module('starterApp')
             return self.addContact(ctrl);
           }
 
+        })
+        .finally(function () {
+          ctrl.isAsyncInProgress = false;
         });
 
     }
