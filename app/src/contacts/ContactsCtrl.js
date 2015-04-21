@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('starterApp')
-  .controller('ContactCtrl', function (ContactService, $mdSidenav, //
-                                       $mdBottomSheet, $log, //
-                                       $q, $scope, //
-                                       $timeout, $mdDialog, //
-                                       $window, $mdToast) {
+  .controller('ContactsCtrl', function (ContactsService, $mdSidenav, //
+                                        $mdBottomSheet, $log, //
+                                        $q, $scope, //
+                                        $timeout, $mdDialog, //
+                                        $window, $mdToast, //
+                                        NotificationsService) {
 
     var self = this;
 
@@ -22,6 +23,23 @@ angular.module('starterApp')
       { label: 'Egg 5', value: 'easter-13' }
     ];
 
+    $scope.$watch(function () {
+      return NotificationsService.messages;
+    }, function (notifications) {
+
+      _.each(notifications, function (notification) {
+
+        $mdToast.show(
+          $mdToast.simple()
+            .content(notification)
+            .position('top left')
+        );
+
+      });
+
+      NotificationsService.messages = [];
+    }, true);
+
     function showToast (message) {
       return $mdToast.show(
         $mdToast.simple()
@@ -34,7 +52,7 @@ angular.module('starterApp')
 
       ctrl.isAsyncInProgress = true;
 
-      return ContactService.loadAllContacts()
+      return ContactsService.loadAllContacts()
         .then(function (response) {
 
           var contacts = response.data;
@@ -106,7 +124,7 @@ angular.module('starterApp')
 
       ctrl.isAsyncInProgress = true;
 
-      return ContactService.saveContact(copyContact)
+      return ContactsService.saveContact(copyContact)
         .then(function (response) {
 
           if (isCreation) {
@@ -135,7 +153,7 @@ angular.module('starterApp')
 
       ctrl.isAsyncInProgress = true;
 
-      return ContactService.deleteContact(copyContact)
+      return ContactsService.deleteContact(copyContact)
         .then(function () {
 
           var idxToRemove = _.findIndex(contacts, { id: copyContact.id });

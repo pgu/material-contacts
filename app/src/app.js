@@ -23,4 +23,32 @@ angular.module('starterApp', [ 'ngMaterial', 'ngMessages' ])
       .primaryPalette('blue')
       .accentPalette('blue-grey');
 
-  });
+  })
+
+  .config(function ($httpProvider) {
+    $httpProvider.interceptors.push(function ($q, $location, NotificationsService) {
+      return {
+        'responseError': function (rejection) {
+
+          var payload = rejection.data;
+          var message;
+
+          if (_.has(payload, 'message')) {
+            message = payload.message;
+
+          } else if (_.has(payload, 'description')) {
+            message = payload.description;
+
+          } else {
+            message = '<strong>Oh snap!</strong> Something wrong happened';
+          }
+
+          NotificationsService.messages.push(message);
+
+          return $q.reject(rejection);
+        }
+      };
+    });
+  })
+
+;

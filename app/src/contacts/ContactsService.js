@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('starterApp')
-  .factory('ContactService', function ($q, $timeout) {
+  .factory('ContactsService', function ($q, $timeout) {
 
     var contacts = [
       { id: '1', firstName: 'John', lastName: 'Doe', avatar: 'contact-man' },
