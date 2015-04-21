@@ -40,7 +40,7 @@ angular.module('starterApp')
         .then(function (contacts) {
 
           if (!_.isEmpty(contacts)) {
-            ctrl.selectedContact = _.first(contacts);
+            self.selectContact(_.first(contacts), ctrl);
           }
 
         });
@@ -56,19 +56,26 @@ angular.module('starterApp')
 
     self.selectContact = function (contact, ctrl) {
 
-      ctrl.selectedContact = contact;
+      ctrl.copyContact = _.cloneDeep(contact);
       self.toggleListPanel();
     }
 
     self.addContact = function (ctrl) {
 
-      ctrl.selectedContact = {
+      ctrl.copyContact = {
         firstName: '',
         lastName: '',
         avatar: _.first(self.avatars).value
       };
 
       self.toggleListPanel();
+
+    };
+
+    self.resetContact = function (copyContact, contacts) {
+
+      var originalContact = _.find(contacts, { id: copyContact.id });
+      angular.copy(originalContact, copyContact);
 
     };
 
