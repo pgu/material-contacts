@@ -103,6 +103,12 @@ angular.module('starterApp')
 
             contacts.push(newContact);
             return self.selectContact(newContact, ctrl);
+
+          } else {
+            var updatedContact = response.data;
+
+            var originalContact = _.find(contacts, { id: copyContact.id });
+            angular.copy(updatedContact, originalContact);
           }
 
         })
