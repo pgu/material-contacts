@@ -4,7 +4,8 @@ angular.module('starterApp')
   .controller('ContactCtrl', function (ContactService, $mdSidenav, //
                                        $mdBottomSheet, $log, //
                                        $q, $scope, //
-                                       $timeout) {
+                                       $timeout, $mdDialog, //
+                                       $window) {
 
     var self = this;
 
@@ -109,7 +110,7 @@ angular.module('starterApp')
 
     };
 
-    self.deleteContact = function (copyContact, contacts, ctrl) {
+    function deleteContact (copyContact, contacts, ctrl) {
 
       var idxToRemove = _.findIndex(contacts, { id: copyContact.id });
 
@@ -133,6 +134,20 @@ angular.module('starterApp')
       } else {
         self.addContact(ctrl);
       }
+
+    }
+
+    self.deleteContact = function (copyContact, contacts, ctrl) {
+
+      var confirm = $mdDialog.confirm()
+        .title('Would you like to delete ' + copyContact.firstName + '?')
+        .ok('Yes')
+        .cancel('Cancel');
+
+      $mdDialog.show(confirm)
+        .then(function () {
+          deleteContact(copyContact, contacts, ctrl);
+        });
 
     };
 
