@@ -1,5 +1,7 @@
 ## Material contacts
 
+The demo is [>> here <<](http://pgu.github.io/material-contacts/)
+
 - "Forked" from [angular-material starter](https://github.com/angular/material-start)
 - SVG files from
  - [material design icons](https://github.com/google/material-design-icons)
