@@ -12,7 +12,7 @@ angular.module('starterApp')
       { id: '6', firstName: 'Homer', lastName: 'Simpson', avatar: 'operator' }
     ];
 
-    var ms = 2000;
+    var ms = 500;
 
     return {
 

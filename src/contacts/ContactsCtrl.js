@@ -82,11 +82,33 @@ angular.module('starterApp')
       $mdSidenav('left').close();
     };
 
+    function CopyService () {
+    }
+
+    CopyService.prototype.from = function (source) {
+      this.source = source;
+      return this;
+    }
+
+    CopyService.prototype.to = function (dest) {
+      this.dest = dest;
+      return this;
+    }
+
+    CopyService.prototype.copy = function () {
+      var self = this;
+
+      _.each('firstName lastName avatar'.split(' '), function (key) {
+        self.dest[ key ] = self.source[ key ];
+      });
+    }
+
+
     self.resetContact = function (copyContact, contacts) {
 
       var originalContact = _.find(contacts, { id: copyContact.id });
-      angular.copy(originalContact, copyContact);
 
+      new CopyService().from(originalContact).to(copyContact).copy();
     };
 
     self.saveContact = function (copyContact, contacts, ctrl) {
@@ -106,9 +128,9 @@ angular.module('starterApp')
 
           } else {
             var updatedContact = response.data;
-
             var originalContact = _.find(contacts, { id: copyContact.id });
-            angular.copy(updatedContact, originalContact);
+
+            new CopyService().from(updatedContact).to(originalContact).copy();
           }
 
         })
