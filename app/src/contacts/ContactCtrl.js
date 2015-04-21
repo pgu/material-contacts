@@ -8,9 +8,16 @@ angular.module('starterApp')
     var self = this;
 
     self.avatars = [
-      'contact-man', 'contact-woman',
-      'owner', 'manager', 'operator',
-      'easter-6', 'easter-8', 'easter-10', 'easter-12', 'easter-13'
+      { label: 'User (Man)', value: 'contact-man' },
+      { label: 'User (Woman)', value: 'contact-woman' },
+      { label: 'Owner', value: 'owner' },
+      { label: 'Manager', value: 'manager' },
+      { label: 'Operator', value: 'operator' },
+      { label: 'Egg 1', value: 'easter-6' },
+      { label: 'Egg 2', value: 'easter-8' },
+      { label: 'Egg 3', value: 'easter-10' },
+      { label: 'Egg 4', value: 'easter-12' },
+      { label: 'Egg 5', value: 'easter-13' }
     ];
 
 
@@ -62,6 +69,10 @@ angular.module('starterApp')
       };
 
       self.toggleListPanel();
+
+    };
+
+    self.saveContact = function (contact) {
 
     };
 
