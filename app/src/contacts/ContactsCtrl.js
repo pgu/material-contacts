@@ -23,14 +23,6 @@ angular.module('starterApp')
       { label: 'Egg 5', value: 'easter-13' }
     ];
 
-    function showToast (message) {
-      return $mdToast.show(
-        $mdToast.simple()
-          .content(message)
-          .position('top right')
-      );
-    }
-
     function fetchContacts (ctrl) {
 
       ctrl.isAsyncInProgress = true;
@@ -121,9 +113,9 @@ angular.module('starterApp')
         .then(function () {
 
           if (isCreation) {
-            showToast(copyContact.firstName + ' successfully added!');
+            NotificationsService.addInfo(copyContact.firstName + ' successfully added!');
           } else {
-            showToast(copyContact.firstName + ' successfully updated!');
+            NotificationsService.addInfo(copyContact.firstName + ' successfully updated!');
           }
 
         })
@@ -164,7 +156,7 @@ angular.module('starterApp')
 
         })
         .then(function () {
-          showToast(copyContact.firstName + ' successfully deleted!');
+          NotificationsService.addInfo(copyContact.firstName + ' successfully deleted!');
         })
         .finally(function () {
           ctrl.isAsyncInProgress = false;

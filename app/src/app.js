@@ -43,7 +43,7 @@ angular.module('starterApp', [ 'ngMaterial', 'ngMessages' ])
             message = '<strong>Oh snap!</strong> Something wrong happened';
           }
 
-          NotificationsService.messages.push(message);
+          NotificationsService.addError(message);
 
           return $q.reject(rejection);
         }

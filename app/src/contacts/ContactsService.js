@@ -16,7 +16,7 @@ angular.module('starterApp')
         var data = _.cloneDeep(contacts);
         return $timeout(function () {
           return $q.when({ data: data });
-        }, ms);
+        }, 500);
       },
 
       saveContact: function (copyContact) {
