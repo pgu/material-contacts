@@ -5,7 +5,7 @@ angular.module('starterApp')
                                        $mdBottomSheet, $log, //
                                        $q, $scope, //
                                        $timeout, $mdDialog, //
-                                       $window) {
+                                       $window, $mdToast) {
 
     var self = this;
 
@@ -22,6 +22,13 @@ angular.module('starterApp')
       { label: 'Egg 5', value: 'easter-13' }
     ];
 
+    function showToast (message) {
+      return $mdToast.show(
+        $mdToast.simple()
+          .content(message)
+          .position('top right')
+      );
+    }
 
     function fetchContacts (ctrl) {
 
@@ -110,6 +117,15 @@ angular.module('starterApp')
           }
 
         })
+        .then(function () {
+
+          if (isCreation) {
+            showToast(copyContact.firstName + ' successfully added!');
+          } else {
+            showToast(copyContact.firstName + ' successfully updated!');
+          }
+
+        })
         .finally(function () {
           ctrl.isAsyncInProgress = false;
         });
@@ -145,6 +161,9 @@ angular.module('starterApp')
             return self.addContact(ctrl);
           }
 
+        })
+        .then(function () {
+          showToast(copyContact.firstName + ' successfully deleted!');
         })
         .finally(function () {
           ctrl.isAsyncInProgress = false;
