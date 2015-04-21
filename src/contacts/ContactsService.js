@@ -5,7 +5,11 @@ angular.module('starterApp')
 
     var contacts = [
       { id: '1', firstName: 'John', lastName: 'Doe', avatar: 'contact-man' },
-      { id: '2', firstName: 'Lara', lastName: 'Croft', avatar: 'contact-woman' }
+      { id: '2', firstName: 'Lara', lastName: 'Croft', avatar: 'contact-woman' },
+      { id: '3', firstName: 'Marge', lastName: 'Simpson', avatar: 'owner' },
+      { id: '4', firstName: 'Lois', lastName: 'Griffin', avatar: 'owner' },
+      { id: '5', firstName: 'Peter', lastName: 'Griffin', avatar: 'manager' },
+      { id: '6', firstName: 'Homer', lastName: 'Simpson', avatar: 'operator' }
     ];
 
     var ms = 2000;

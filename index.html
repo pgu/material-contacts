@@ -31,7 +31,7 @@
 
         <md-item>
           <md-button ng-click="cc.addContact(cc)"
-                     ng-class="{'selected' : !cc.copyContact.id }"
+                     class="md-primary"
                      ng-disabled="cc.isAsyncInProgress">
             <md-icon md-svg-icon="add-contact" class="avatar"></md-icon>
             <span>New contact</span>
@@ -40,7 +40,7 @@
 
         <md-item ng-repeat="contact in cc.contacts">
           <md-button ng-click="cc.selectContact(contact, cc)"
-                     ng-class="{'selected' : contact.id === cc.copyContact.id }"
+                     ng-class="{'md-accent' : contact.id === cc.copyContact.id }"
                      ng-disabled="cc.isAsyncInProgress">
             <md-icon md-svg-icon="{{ contact.avatar }}" class="avatar"></md-icon>
             <span>{{ contact.firstName }} {{ contact.lastName }}</span>
@@ -89,14 +89,14 @@
 
         <section layout="row" layout-align="left center" style="margin-top: 40px;">
 
-          <md-button class="md-fab md-primary" aria-label="Save contact"
+          <md-button class="md-fab md-hue-2 md-primary" aria-label="Save contact"
                      style="margin-right: 10px;"
                      ng-disabled="contactForm.$invalid || cc.isAsyncInProgress"
                      ng-click="cc.saveContact(cc.copyContact, cc.contacts, cc)">
             <md-icon md-svg-src="save"></md-icon>
           </md-button>
 
-          <md-button class="md-fab" aria-label="Undo changes"
+          <md-button class="md-fab md-primary" aria-label="Undo changes"
                      ng-if="cc.copyContact.id"
                      ng-disabled="cc.isAsyncInProgress"
                      ng-click="cc.resetContact(cc.copyContact, cc.contacts)">
@@ -107,7 +107,7 @@
 
       </form>
 
-      <md-button class="delete-contact" md-no-ink
+      <md-button class="delete-contact md-warn" md-no-ink
                  ng-if="cc.copyContact.id"
                  ng-disabled="cc.isAsyncInProgress"
                  ng-click="cc.deleteContact(cc.copyContact, cc.contacts, cc)"
