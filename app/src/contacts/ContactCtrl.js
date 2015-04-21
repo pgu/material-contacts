@@ -85,7 +85,7 @@ angular.module('starterApp')
 
     };
 
-    self.saveContact = function (copyContact, ctrl) {
+    self.saveContact = function (copyContact, contacts, ctrl) {
 
       var isCreation = !_.has(copyContact, 'id');
       if (isCreation) {
@@ -93,13 +93,13 @@ angular.module('starterApp')
         var newContact = _.cloneDeep(copyContact);
         newContact.id = Date.now();
 
-        ctrl.contacts.push(newContact);
+        contacts.push(newContact);
 
         self.selectContact(newContact, ctrl);
 
       } else {
 
-        var originalContact = _.find(ctrl.contacts, { id: copyContact.id });
+        var originalContact = _.find(contacts, { id: copyContact.id });
         angular.copy(copyContact, originalContact);
 
       }
