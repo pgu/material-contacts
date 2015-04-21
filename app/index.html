@@ -101,7 +101,8 @@
     </form>
 
     <md-button class="delete-contact" md-no-ink
-               ng-click="cc.deleteContact($event)"
+               ng-if="cc.copyContact.id"
+               ng-click="cc.deleteContact(cc.copyContact, cc.contacts, cc)"
                aria-label="Delete contact">
       <md-icon md-svg-icon="delete-contact"></md-icon>
     </md-button>

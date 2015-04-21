@@ -106,6 +106,33 @@ angular.module('starterApp')
 
     };
 
+    self.deleteContact = function (copyContact, contacts, ctrl) {
+
+      var idxToRemove = _.findIndex(contacts, { id: copyContact.id });
+
+      var contactToSelect;
+      if (idxToRemove > 0) {
+        contactToSelect = contacts[ idxToRemove - 1 ];
+
+      } else if (idxToRemove === 0) {
+
+        if (_.size(contacts) > 1) {
+          contactToSelect = contacts[ 1 ];
+        }
+
+      }
+
+      contacts.splice(idxToRemove, 1);
+
+      if (contactToSelect) {
+        self.selectContact(contactToSelect, ctrl);
+
+      } else {
+        self.addContact(ctrl);
+      }
+
+    };
+
     initView(self);
   });
 
