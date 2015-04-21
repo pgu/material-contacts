@@ -23,7 +23,7 @@ angular.module('starterApp')
     }
 
     var showError = showMessage('error', 'top left');
-    var showInfo = showMessage('info', 'top right');
+    var showInfo = showMessage('info', 'bottom right');
 
     $scope.$watch(function () {
       return NotificationsService.notifications;
