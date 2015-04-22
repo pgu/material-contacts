@@ -11,16 +11,22 @@ angular.module('starterApp')
     var self = this;
 
     self.avatars = [
-      { label: 'User (Man)', value: 'contact-man' },
-      { label: 'User (Woman)', value: 'contact-woman' },
-      { label: 'Owner', value: 'owner' },
-      { label: 'Manager', value: 'manager' },
-      { label: 'Operator', value: 'operator' },
-      { label: 'Egg 1', value: 'easter-6' },
-      { label: 'Egg 2', value: 'easter-8' },
-      { label: 'Egg 3', value: 'easter-10' },
-      { label: 'Egg 4', value: 'easter-12' },
-      { label: 'Egg 5', value: 'easter-13' }
+      { label: 'Woman (1)', value: 'svg-6' },
+      { label: 'Woman (2)', value: 'svg-7' },
+      { label: 'Woman (3)', value: 'svg-8' },
+      { label: 'Woman (4)', value: 'svg-12' },
+      { label: 'Woman (5)', value: 'svg-13' },
+      { label: 'Woman (6)', value: 'svg-15' },
+      { label: 'Man (1)', value: 'svg-1' },
+      { label: 'Man (2)', value: 'svg-2' },
+      { label: 'Man (3)', value: 'svg-3' },
+      { label: 'Man (4)', value: 'svg-4' },
+      { label: 'Man (5)', value: 'svg-14' },
+      { label: 'Man (6)', value: 'svg-16' },
+      { label: 'Abuelo', value: 'svg-5' },
+      { label: 'Abuela', value: 'svg-9' },
+      { label: 'Dog', value: 'svg-10' },
+      { label: 'Cat', value: 'svg-11' }
     ];
 
     function fetchContacts (ctrl) {

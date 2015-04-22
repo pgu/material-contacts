@@ -4,13 +4,21 @@ angular.module('starterApp')
   .factory('ContactsService', function ($q, $timeout) {
 
     var contacts = [
-      { id: '1', firstName: 'John', lastName: 'Doe', avatar: 'contact-man' },
-      { id: '2', firstName: 'Lara', lastName: 'Croft', avatar: 'contact-woman' },
-      { id: '3', firstName: 'Marge', lastName: 'Simpson', avatar: 'owner' },
-      { id: '4', firstName: 'Lois', lastName: 'Griffin', avatar: 'owner' },
-      { id: '5', firstName: 'Peter', lastName: 'Griffin', avatar: 'manager' },
-      { id: '6', firstName: 'Homer', lastName: 'Simpson', avatar: 'operator' }
+      { id: '21', firstName: 'John', lastName: 'Doe', avatar: 'svg-14' },
+      { id: '22', firstName: 'Lara', lastName: 'Croft', avatar: 'svg-13' },
+      { id: '23', firstName: 'Stewie', lastName: 'Griffin', avatar: 'svg-1' },
+      { id: '24', firstName: 'Brian', lastName: 'Griffin', avatar: 'svg-10' },
+      { id: '25', firstName: 'Lois', lastName: 'Griffin', avatar: 'svg-6' },
+      { id: '26', firstName: 'Meg', lastName: 'Griffin', avatar: 'svg-15' },
+      { id: '27', firstName: 'El', lastName: 'Abuelo', avatar: 'svg-5' },
+      { id: '28', firstName: 'La', lastName: 'Abuela', avatar: 'svg-9' },
+      { id: '29', firstName: 'Gato', lastName: 'Abuela', avatar: 'svg-11' }
     ];
+
+    //_.times(16, function (j) {
+    //  var i = j + 1;
+    //  contacts.push({ id: '' + i, firstName: 'F' + i, lastName: 'L' + i, avatar: 'svg-' + i });
+    //});
 
     var ms = 500;
 
