@@ -9,5 +9,6 @@ The demo is [>> here <<](http://pgu.github.io/material-contacts-apispark/)
  - [iconmonstr](http://iconmonstr.com/)
 
 There is a standalone (without server) version [>> here <<](http://pgu.github.io/material-contacts/)
+
 Other demo forked from angular-material: [Angular material starter online](http://pgu.github.io/material-start/)
 
