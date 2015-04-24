@@ -19,7 +19,8 @@ angular.module('starterApp', [ 'ngMaterial', 'ngMessages' ])
   })
 
   .config(function ($httpProvider) {
-    $httpProvider.interceptors.push(function ($q, $location, NotificationsService) {
+    $httpProvider.interceptors.push(function ($q, $location,
+                                              NotificationsService, MixpanelService) {
       return {
         'responseError': function (rejection) {
 
@@ -37,6 +38,7 @@ angular.module('starterApp', [ 'ngMaterial', 'ngMessages' ])
           }
 
           NotificationsService.addError(message);
+          MixpanelService.track('error', { message: message || 'no message' });
 
           return $q.reject(rejection);
         }

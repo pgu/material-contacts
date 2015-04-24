@@ -6,7 +6,7 @@ angular.module('starterApp')
                                         $q, $scope, //
                                         $timeout, $mdDialog, //
                                         $window, $mdToast, //
-                                        NotificationsService) {
+                                        NotificationsService, MixpanelService) {
 
     var self = this;
 
@@ -36,8 +36,9 @@ angular.module('starterApp')
       return ContactsService.loadAllContacts()
         .then(function (response) {
 
-          var contacts = response.data;
+          MixpanelService.track('list contacts');
 
+          var contacts = response.data;
           ctrl.contacts = contacts;
 
           return contacts;
@@ -148,6 +149,7 @@ angular.module('starterApp')
             NotificationsService.addInfo(copyContact.firstName + ' successfully updated!');
           }
 
+          MixpanelService.track('save', copyContact);
         })
         .finally(function () {
           ctrl.isAsyncInProgress = false;
@@ -187,6 +189,7 @@ angular.module('starterApp')
         })
         .then(function () {
           NotificationsService.addInfo(copyContact.firstName + ' successfully deleted!');
+          MixpanelService.track('delete', copyContact);
         })
         .finally(function () {
           ctrl.isAsyncInProgress = false;
