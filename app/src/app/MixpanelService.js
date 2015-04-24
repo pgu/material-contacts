@@ -1,14 +1,15 @@
 'use strict';
 
 angular.module('starterApp')
-  .factory('MixpanelService', function ($window, $log) {
-
-    var mixpanel = $window.mixpanel || { track: _.noop };
+  .factory('MixpanelService', function ($window) {
 
     return {
       track: function (key, data) {
-        $log.log(mixpanel, key, data);
-        mixpanel.track(key, data);
+
+        if (_.has($window, 'mixpanel')) {
+          $window.mixpanel.track(key, data);
+        }
+
       }
     };
 
